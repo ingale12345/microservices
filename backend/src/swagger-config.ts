@@ -1,3 +1,5 @@
+import { usersSchema } from './services/users/users.schema'
+
 export const swaggerConfig = {
   definition: {
     openapi: '3.0.0', // OpenAPI version
@@ -17,6 +19,9 @@ export const swaggerConfig = {
           type: 'http',
           scheme: 'bearer'
         }
+      },
+      schemas: {
+        Users: usersSchema
       }
     },
     security: [{ BearerAuth: [] }]

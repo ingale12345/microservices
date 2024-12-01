@@ -8,11 +8,14 @@ import { passwordHash } from '@feathersjs/authentication-local'
 import type { HookContext } from '../../declarations'
 import { dataValidator, queryValidator } from '../../validators'
 import type { UsersService } from './users.class'
-
+import { MulterFileSchema } from '../../Types/common.types'
 // Main data model schema
 export const usersSchema = Type.Object(
   {
     _id: ObjectIdSchema(),
+    firstName: Type.String(),
+    lastName: Type.String(),
+    profilePicture: Type.Optional(MulterFileSchema),
     email: Type.String(),
     password: Type.Optional(Type.String())
   },
@@ -28,7 +31,7 @@ export const usersExternalResolver = resolve<Users, HookContext<UsersService>>({
 })
 
 // Schema for creating new entries
-export const usersDataSchema = Type.Pick(usersSchema, ['email', 'password'], {
+export const usersDataSchema = Type.Pick(usersSchema, ['firstName', 'lastName', 'email', 'password'], {
   $id: 'UsersData'
 })
 export type UsersData = Static<typeof usersDataSchema>
