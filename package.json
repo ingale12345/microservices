@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@feathersjs/authentication-local": "^5.0.31"
+  }
+}
