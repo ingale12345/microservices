@@ -11,6 +11,31 @@ export type { Users, UsersData, UsersPatch, UsersQuery }
 export interface UsersParams extends MongoDBAdapterParams<UsersQuery> {}
 
 // By default calls the standard MongoDB adapter service methods but can be customized with your own functionality.
+
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: Users management
+ */
+
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Retrieve a list of users
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: A list of users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: './users.schema'
+ */
+
 export class UsersService<ServiceParams extends Params = UsersParams> extends MongoDBService<
   Users,
   UsersData,

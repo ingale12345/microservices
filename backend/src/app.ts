@@ -1,4 +1,3 @@
-// For more information about this file see https://dove.feathersjs.com/guides/cli/application.html
 import { feathers } from '@feathersjs/feathers'
 import express, {
   rest,
@@ -9,9 +8,12 @@ import express, {
   notFound,
   errorHandler
 } from '@feathersjs/express'
+import { RequestHandler } from 'express'
 import configuration from '@feathersjs/configuration'
 import socketio from '@feathersjs/socketio'
-
+import swaggerJSDoc from 'swagger-jsdoc'
+import swaggerUi from 'swagger-ui-express'
+import { swaggerConfig } from './swagger-config'
 import type { Application } from './declarations'
 import { configurationValidator } from './configuration'
 import { logger } from './logger'
@@ -22,6 +24,14 @@ import { services } from './services/index'
 import { channels } from './channels'
 
 const app: Application = express(feathers())
+// Generate Swagger docs
+const specs = swaggerJSDoc(swaggerConfig)
+// Serve Swagger UI
+app.use(
+  '/docs',
+  swaggerUi.serve as unknown as RequestHandler,
+  swaggerUi.setup(specs) as unknown as RequestHandler
+)
 
 // Load app configuration
 app.configure(configuration(configurationValidator))
