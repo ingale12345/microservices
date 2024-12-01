@@ -3,6 +3,7 @@ import { Type } from '@feathersjs/typebox'
 
 export const MulterFileSchema = Type.Object({
   fieldname: Type.String(),
+  filename: Type.String(),
   originalname: Type.String(),
   encoding: Type.String(),
   mimetype: Type.String(),
