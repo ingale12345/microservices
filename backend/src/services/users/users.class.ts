@@ -24,7 +24,7 @@ export interface UsersParams extends MongoDBAdapterParams<UsersQuery> {}
  * /authentication:
  *  post:
  *    summary: Login to the application
- *    tags: [LoginDetails]
+ *    tags: [Authentication]
  *    requestBody:
  *      required: true
  *      content:
