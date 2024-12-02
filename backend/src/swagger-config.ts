@@ -1,4 +1,5 @@
 import { usersSchema } from './services/users/users.schema'
+import { LoginDetailsSchema } from './Types'
 
 export const swaggerConfig = {
   definition: {
@@ -21,7 +22,8 @@ export const swaggerConfig = {
         }
       },
       schemas: {
-        Users: usersSchema
+        Users: usersSchema,
+        LoginDetails: LoginDetailsSchema
       }
     },
     security: [{ BearerAuth: [] }]

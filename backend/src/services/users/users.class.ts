@@ -21,6 +21,20 @@ export interface UsersParams extends MongoDBAdapterParams<UsersQuery> {}
 
 /**
  * @swagger
+ * /authentication:
+ *  post:
+ *    summary: Login to the application
+ *    tags: [LoginDetails]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *               $ref: '#/components/schemas/LoginDetails'
+ *    responses:
+ *      200:
+ *        description: Login successful
+ * @swagger
  * /users:
  *   get:
  *     summary: Retrieve a list of users
