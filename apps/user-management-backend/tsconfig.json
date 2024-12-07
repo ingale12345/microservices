@@ -1,21 +1,17 @@
 {
-  "ts-node": {
-    "files": true
-  },
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
-    "outDir": "./lib",
     "rootDir": "./src",
-    "declaration": true,
-    "strict": true,
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"],
     "esModuleInterop": true,
-    "sourceMap": true
+    "skipLibCheck": true,
+    "paths": {
+      "*": ["node_modules/*"],
+      "@/*": ["apps/*/src"],
+    },
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "test"
-  ]
+  "include": ["src/**/*.ts"]
+  // ,
+  // "exclude": ["node_modules", "dist"]
 }

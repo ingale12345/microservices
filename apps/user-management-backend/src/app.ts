@@ -26,12 +26,9 @@ import { channels } from './channels'
 const app: Application = express(feathers())
 // Generate Swagger docs
 const specs = swaggerJSDoc(swaggerConfig)
+
 // Serve Swagger UI
-app.use(
-  '/docs',
-  swaggerUi.serve as unknown as RequestHandler,
-  swaggerUi.setup(specs) as unknown as RequestHandler
-)
+// app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs) as unknown as RequestHandler)
 
 // Load app configuration
 app.configure(configuration(configurationValidator))

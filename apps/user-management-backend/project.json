@@ -1,0 +1,50 @@
+{
+    "name": "user-management-backend",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "root": "apps/user-management-backend",
+    "sourceRoot": "apps/user-management-backend/src",
+    "projectType": "application",
+    "targets": {
+   "build": {
+    "executor": "@nrwl/node:build",
+    "options": {
+      "outputPath": "dist/apps/user-management-backend",
+      "main": "apps/user-management-backend/src/main.ts",
+      "tsConfig": "apps/user-management-backend/tsconfig.json",
+      "assets": ["apps/user-management-backend/public"]
+    }
+  },
+     "serve": {
+  "executor": "@nrwl/node:execute",
+  "options": {
+    "buildTarget": "user-management-backend:build",
+    "buildTargetOptions": {
+      "watch": true
+    }
+  },
+  "configurations": {
+    "development": {
+      "buildTarget": "user-management-backend:build:development"
+    },
+    "production": {
+      "buildTarget": "user-management-backend:build:production"
+    }
+  }
+}
+,
+      "test": {
+        "executor": "@nrwl/jest:jest",
+        "options": {
+          "jestConfig": "apps/user-management-backend/jest.config.js",
+          "passWithNoTests": true
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "options": {
+          "lintFilePatterns": ["apps/user-management-backend/**/*.ts"]
+        }
+      }
+    }
+  }
+  

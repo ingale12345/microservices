@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "projects": {
+    "user-management-backend": {
+      "root": "apps/user-management-backend",
+      "sourceRoot": "apps/user-management-backend/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/user-management-backend",
+            "main": "apps/user-management-backend/src/main.ts",
+            "tsConfig": "apps/user-management-backend/tsconfig.app.json",
+            "assets": ["apps/user-management-backend/public"]
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "user-management-backend:build"
+          }
+        }
+      }
+    }
+  }
+}
